@@ -1,13 +1,7 @@
-/*  BASE  */
+
 @import "./helpers";
 @import "./base";
-@import "./layout";
 @import "./pages/welcome";
 @import "./pages/playing";
 @import "./pages/choose-word";
 @import "./pages/wait";
-
-
-pre {
-    text-align: left;
-}
