@@ -4,6 +4,7 @@
 
 html {
     font-family: sans-serif;
+    font-weight: 600;
 }
 
 body {
@@ -48,9 +49,9 @@ input,
 select {
     padding: 5px;
     padding-left: none;
-    border: unset;
-    background: unset;
-    border-bottom: 1px solid black;
+    // border: unset;
+    // background: unset;
+    // border-bottom: 1px solid black;
 }
 
 textarea {

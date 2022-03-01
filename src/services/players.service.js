@@ -7,6 +7,7 @@ const KEY = 'players';
 export const playerService = {
     getPlayerRule,
     resetPlayers,
+    quary,
 };
 
 setPlayer()
@@ -17,6 +18,10 @@ async function setPlayer(){
         players = [{draw: null, guess: null}]
         DbService.insert(KEY,players)
     }
+}
+
+async function quary(){
+    return await DbService.query(KEY)
 }
 
 async function getPlayerRule() {

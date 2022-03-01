@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { canvasService } from '../services/canvas.service';
 
 export function Canvas() {
   const canvasRef = useRef(null);
@@ -18,6 +19,9 @@ export function Canvas() {
     context.strokeStyle = 'black';
     context.lineWidth = '3';
     contextRef.current = context;
+    return ()=>{
+        canvasService.reset()
+    }
   }, []);
 
   const startDrawing = ({ nativeEvent }) => {
@@ -29,7 +33,6 @@ export function Canvas() {
 
   const finishDrawing = () => {
     contextRef.current.closePath();
-    console.log(canvasRef.current.toDataURL())
     setIsDrawing(false);
   };
 
@@ -38,6 +41,7 @@ export function Canvas() {
     const { offsetX, offsetY } = nativeEvent;
     contextRef.current.lineTo(offsetX, offsetY);
     contextRef.current.stroke()
+    canvasService.save(canvasRef.current.toDataURL())
   };
 
   return (
@@ -46,8 +50,8 @@ export function Canvas() {
       onMouseUp={finishDrawing}
       onMouseMove={draw}
       ref={canvasRef}
-      width='300px'
-      height='300px'
+      width='250px'
+      height='250px'
     />
   );
 }
