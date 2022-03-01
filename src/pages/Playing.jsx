@@ -5,26 +5,33 @@ import { canvasService } from '../services/canvas.service';
 import { gameService } from '../services/game.service';
 
 export function Playing() {
+
   let navigate = useNavigate();
   const { rule } = useParams();
   const [canvasImg, setCanvasImg] = useState('');
-  const [gameData,setGameData] = useState({})
+  const [gameData, setGameData] = useState({});
   const [guess, setGuess] = useState('');
   const [msg, setMsg] = useState('');
 
   let intervalGuessId;
+  let intervalGuessEndId;
   let intervalDrawId;
 
   useEffect(() => {
-    if (rule === 'guess') intervalGuessId = setInterval(getCanvasImg, 50);
-    else{
-        gameService.setIsGameOn(true)
-        intervalDrawId = setInterval(isGameOn, 3000);
+    if (rule === 'guess'){
+      intervalGuessId = setInterval(getCanvasImg, 50);
+      gameService.setIsGameOn(true);
+      intervalGuessEndId = setInterval(isGameOn, 3000);
     } 
+    else {
+      gameService.setIsSessionOn(true);
+      intervalDrawId = setInterval(isSessionOn, 3000);
+    }
     getGameData();
     return () => {
       clearInterval(intervalGuessId);
       clearInterval(intervalDrawId);
+      clearInterval(intervalGuessEndId);
     };
   }, []);
 
@@ -36,44 +43,54 @@ export function Playing() {
   const getGameData = async () => {
     const [game] = await gameService.quary();
     setGameData(game);
-    return game
+    return game;
   };
 
   const onChange = ({ target }) => {
     setGuess(target.value);
   };
 
-  const isGameOn = async () => {
-      const game = await getGameData()
-      if(!game.isGameOn){
-        showMsg('Succeed!');
-          clearInterval(intervalDrawId)
-          console.log('from draw');
-          setTimeout(()=>navigate(`/wait`), 3000);
-        }
-  }
+  const isSessionOn = async () => {
+    const game = await getGameData();
+    if (!game.isGameOn) navigate(`/`);
+    if (!game.isSessionOn) {
+      showMsg('Succeed!');
+      clearInterval(intervalDrawId);
+      setTimeout(() => navigate(`/wait`), 3000);
+    }
+  };
 
   const tryGuessing = async () => {
-    const game = await getGameData()
-    if(!game.isGameOn) return
+    const game = await getGameData();
+    if (!game.isSessionOn) return;
     if (game.word.toUpperCase() === guess.toUpperCase()) {
-      await gameService.setIsGameOn(false);
+      await gameService.setIsSessionOn(false);
       await gameService.setScore();
       showMsg('Bravo!');
-      setTimeout(()=>navigate(`/wait`), 3000);
-    }else{
-      showMsg('Nope.. Try Again')
+      setTimeout(() => navigate(`/wait`), 3000);
+    } else {
+      showMsg('Nope.. Try Again');
     }
-};
+  };
 
-const showMsg = (txt) => {
-      setMsg(txt)
-      setTimeout(()=>setMsg(''), 2500);
+  const showMsg = (txt) => {
+    setMsg(txt);
+    setTimeout(() => setMsg(''), 2500);
+  };
+
+  const isGameOn = async () => {
+    const game = await getGameData()
+    if(!game.isGameOn) navigate(`/`);
   }
- 
+
+  const endGame = () =>{
+    gameService.setIsGameOn(false)
+    navigate(`/`)
+  }
+
   return (
     <section className="playing main-layout">
-    <h1>Game On!</h1>
+      <h1>Game On!</h1>
       <div className="data">
         <div className="poits">Score: {gameData.score}</div>
       </div>
@@ -83,11 +100,11 @@ const showMsg = (txt) => {
         </div>
       )}
       <div>
-      {rule !== 'guess' && <div>Draw here:</div>}
-      <div className="display">
-        {rule !== 'guess' && <Canvas />}
-        {rule === 'guess' && <img src={canvasImg} />}
-      </div>
+        {rule !== 'guess' && <div>Draw here:</div>}
+        <div className="display">
+          {rule !== 'guess' && <Canvas />}
+          {rule === 'guess' && <img src={canvasImg} />}
+        </div>
       </div>
       {rule === 'guess' && (
         <div className="guessing">
@@ -102,7 +119,7 @@ const showMsg = (txt) => {
           </button>
         </div>
       )}
-      <button className="end-btn">End Game</button>
+      <button className="end-btn" onClick={endGame}>End Game</button>
       <section className="msg">{msg}</section>
     </section>
   );
