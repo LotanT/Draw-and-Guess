@@ -51,7 +51,7 @@ export function Canvas() {
   const getPos = (ev) => {
     let offsetX;
     let offsetY;
-    if (ev.touches[0]) {
+    if (ev.touches) {
       const { pageX, pageY } = ev.touches[0];
       offsetX = pageX - offsetLeft.current;
       offsetY = pageY - offsetTop.current;
