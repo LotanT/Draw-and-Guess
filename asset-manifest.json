@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Draw-and-Guess/static/css/main.60831b92.css",
-    "main.js": "/Draw-and-Guess/static/js/main.2a29e65a.js",
+    "main.js": "/Draw-and-Guess/static/js/main.eb807c2d.js",
     "index.html": "/Draw-and-Guess/index.html",
     "main.60831b92.css.map": "/Draw-and-Guess/static/css/main.60831b92.css.map",
-    "main.2a29e65a.js.map": "/Draw-and-Guess/static/js/main.2a29e65a.js.map"
+    "main.eb807c2d.js.map": "/Draw-and-Guess/static/js/main.eb807c2d.js.map"
   },
   "entrypoints": [
     "static/css/main.60831b92.css",
-    "static/js/main.2a29e65a.js"
+    "static/js/main.eb807c2d.js"
   ]
 }
