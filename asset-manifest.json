@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/Draw-and-Guess/static/css/main.60831b92.css",
+    "main.css": "/Draw-and-Guess/static/css/main.88e34c18.css",
     "main.js": "/Draw-and-Guess/static/js/main.eb807c2d.js",
+    "static/media/mainBtn.jpg": "/Draw-and-Guess/static/media/mainBtn.29f06adc6ef01c852383.jpg",
+    "static/media/appBackground.jpg": "/Draw-and-Guess/static/media/appBackground.c22d154919ce76258031.jpg",
     "index.html": "/Draw-and-Guess/index.html",
-    "main.60831b92.css.map": "/Draw-and-Guess/static/css/main.60831b92.css.map",
+    "main.88e34c18.css.map": "/Draw-and-Guess/static/css/main.88e34c18.css.map",
     "main.eb807c2d.js.map": "/Draw-and-Guess/static/js/main.eb807c2d.js.map"
   },
   "entrypoints": [
-    "static/css/main.60831b92.css",
+    "static/css/main.88e34c18.css",
     "static/js/main.eb807c2d.js"
   ]
 }
