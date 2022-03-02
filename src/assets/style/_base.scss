@@ -26,7 +26,6 @@ button {
     background: unset;
     padding: 0;
     outline: none;
-    // border: 1px solid black;
     color: black;
     border-radius: 5px;
     font-size: 1rem;
@@ -34,10 +33,6 @@ button {
 button:hover {
     cursor: pointer;
 }
-// button:active {
-//     color: white;
-//     border-color: white;
-// }
 
 input,
 textarea {
@@ -49,13 +44,6 @@ input,
 select {
     padding: 5px;
     padding-left: none;
-    // border: unset;
-    // background: unset;
-    // border-bottom: 1px solid black;
-}
-
-textarea {
-    height: 75px;
 }
 
 a,
