@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Draw-and-Guess/static/css/main.88e34c18.css",
-    "main.js": "/Draw-and-Guess/static/js/main.97db38c5.js",
-    "static/media/mainBtn.jpg": "/Draw-and-Guess/static/media/mainBtn.29f06adc6ef01c852383.jpg",
-    "static/media/appBackground.jpg": "/Draw-and-Guess/static/media/appBackground.c22d154919ce76258031.jpg",
-    "index.html": "/Draw-and-Guess/index.html",
-    "main.88e34c18.css.map": "/Draw-and-Guess/static/css/main.88e34c18.css.map",
-    "main.97db38c5.js.map": "/Draw-and-Guess/static/js/main.97db38c5.js.map"
+    "main.css": "/DrawandGuess/static/css/main.cac1349b.css",
+    "main.js": "/DrawandGuess/static/js/main.97db38c5.js",
+    "static/media/mainBtn.jpg": "/DrawandGuess/static/media/mainBtn.29f06adc6ef01c852383.jpg",
+    "static/media/appBackground.jpg": "/DrawandGuess/static/media/appBackground.c22d154919ce76258031.jpg",
+    "index.html": "/DrawandGuess/index.html",
+    "main.cac1349b.css.map": "/DrawandGuess/static/css/main.cac1349b.css.map",
+    "main.97db38c5.js.map": "/DrawandGuess/static/js/main.97db38c5.js.map"
   },
   "entrypoints": [
-    "static/css/main.88e34c18.css",
+    "static/css/main.cac1349b.css",
     "static/js/main.97db38c5.js"
   ]
 }
